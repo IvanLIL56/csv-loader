@@ -1,0 +1,52 @@
+[project]
+name = "csv-loader"
+version = "1.0.0"
+description = "Загрузка CSV-файлов в PostgreSQL с очередью задач"
+requires-python = ">=3.10"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = [
+    "F",   # Pyflakes: логические ошибки (неопределенные имена, неиспользуемые импорты/переменные)
+    "E",   # pycodestyle errors: стилевые ошибки
+    "W",   # pycodestyle warnings: предупреждения о стиле
+    "I",   # isort: сортировка импортов
+    "UP",  # pyupgrade: модернизация синтаксиса
+    "B",   # flake8-bugbear: поиск вероятных багов
+    "DTZ", # flake8-datetimez — timezone-aware datetime
+]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+warn_unused_configs = true
+warn_unused_ignores = true
+show_error_codes = true
+plugins = ["pydantic.mypy"]
+
+[[tool.mypy.overrides]]
+module = ["psycopg2.*"]
+ignore_missing_imports = true
+
+
+[tool.pylint.main]
+# Целевая версия Python
+py-version = "3.12"
+# Игнорируемые пути
+ignore = ["migrations", "venv"]
+
+[tool.pylint.messages_control]
+# Отключаем всё, кроме duplicate-code (если нужна только эта проверка)
+disable = "all"
+enable = "R0801"   # duplicate-code
+
+[tool.pylint.similarities]
+# Минимальное число строк для срабатывания (по умолчанию 4)
+min-similarity-lines = 6
+# Игнорировать комментарии и докстринги при сравнении
+ignore-comments = true
+ignore-docstrings = true
+ignore-imports = true   # полезно, чтобы не ловить одинаковые импорты
