@@ -11,7 +11,7 @@ from datetime import datetime, timedelta
 # ============================================================
 MODE = "pool"
 POOL_SIZE = 100
-ROWS_PER_FILE = 30
+ROWS_PER_FILE = 100
 
 # ---------- Параметры директорий ----------
 BASE_DIR = "tests"
@@ -23,8 +23,8 @@ MONTHS = [
     "09_сентябрь","10_октябрь", "11_ноябрь",   "12_декабрь",
 ]
 MONTHS_TO_USE = MONTHS[4:10]
-DAYS_PER_MONTH = 15
-TIMES = [(9, 0), (12, 30), (18, 0)]
+DAYS_PER_MONTH = 20
+TIMES = [(9, 0), (12, 30), (23, 0)]
 
 
 # ---------- Генераторы одиночных значений ----------

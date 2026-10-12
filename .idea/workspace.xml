@@ -4,21 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="49ba5e9d-0600-4bae-bc7c-c5523c4a60d0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/fidi.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gen_test_files.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/filters/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/filters/file_filter.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logging_config.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/schemas/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/schemas/models.py" afterDir="false" />
+    <list default="true" id="49ba5e9d-0600-4bae-bc7c-c5523c4a60d0" name="Changes" comment="после послдених корректировок, рабочая версия">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gen_test_files.py" beforeDir="false" afterPath="$PROJECT_DIR$/gen_test_files.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/worker.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,9 +67,30 @@
       <option name="presentableId" value="Default" />
       <updated>1791738674069</updated>
     </task>
+    <task id="LOCAL-00001" summary="после послдених корректировок, рабочая версия">
+      <option name="closed" value="true" />
+      <created>1791806604402</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1791806604402</updated>
+    </task>
+    <task id="LOCAL-00002" summary="после послдених корректировок, рабочая версия">
+      <option name="closed" value="true" />
+      <created>1791806635176</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1791806635176</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="docker-compose.yml" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="после послдених корректировок, рабочая версия" />
+    <option name="LAST_COMMIT_MESSAGE" value="после послдених корректировок, рабочая версия" />
   </component>
 </project>

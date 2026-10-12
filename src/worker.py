@@ -32,8 +32,22 @@ def process_task(task: Task, db: DatabaseManager, config: Config) -> int:
     total_rows = 0
 
     with db.get_connection() as conn:
+        # Создаём таблицу если нужно
         db.create_data_table(conn, table_name, processor.all_columns[:-4])
 
+        # КРИТИЧНО: Очищаем старые данные этого файла перед вставкой.
+        # Это гарантирует идемпотентность — при повторной обработке
+        # (после сбоя) не будет дублей.
+        deleted = db.cleanup_file_data(conn, table_name, task.file_path)
+        if deleted > 0:
+            logger.info(
+                "Задача %d: очищено %d старых строк для файла %s.",
+                task.id,
+                deleted,
+                file_path.name,
+            )
+
+        # Потоковая вставка батчами
         for batch in processor.read_batches(
             month=task.month,
             date=task.date,

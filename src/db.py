@@ -212,7 +212,10 @@ class DatabaseManager:
     def has_active_tasks(self) -> bool:
         """Проверяет, есть ли ещё активные задачи."""
         full_table_name = f"{DATA_SCHEMA}.tasks"
-        sql = f"SELECT COUNT(*) FROM {full_table_name} WHERE status IN ('pending', 'processing')"
+        sql = f"""
+        SELECT COUNT(*) FROM {full_table_name}
+        WHERE status IN ('pending', 'processing')
+        """
         with self.get_connection() as conn:
             with conn.cursor() as cur:
                 cur.execute(sql)
@@ -292,6 +295,39 @@ class DatabaseManager:
             full_table_name,
             len(csv_columns) + 4,
         )
+
+    def cleanup_file_data(
+        self,
+        conn: psycopg2.extensions.connection,
+        table_name: str,
+        file_path: str,
+    ) -> int:
+        """
+        Удаляет все строки, связанные с указанным файлом.
+
+        Это обеспечивает идемпотентность: при повторной обработке файла
+        старые данные удаляются и заменяются новыми.
+
+        Returns:
+            Количество удалённых строк.
+        """
+        full_table_name = f"{DATA_SCHEMA}.{self.quote_identifier(table_name)}"
+        sql = f"""
+        DELETE FROM {full_table_name}
+        WHERE "_file_path" = %s
+        """
+        with conn.cursor() as cur:
+            cur.execute(sql, (file_path,))
+            deleted_count = cur.rowcount
+        conn.commit()
+        if deleted_count > 0:
+            logger.info(
+                "Удалено %d строк из %s для файла %s (очистка перед вставкой).",
+                deleted_count,
+                full_table_name,
+                file_path,
+            )
+        return deleted_count
 
     def insert_batch_copy(
         self,
